@@ -11,7 +11,7 @@ from aiogram.utils import executor
 
 logging.basicConfig(level=logging.INFO)
 
-API_TOKEN = ''
+API_TOKEN = '6109494310:AAE_WIH4JnUjWMtLZnraijkp1Ms73dqT7oI'
 
 bot = Bot(token=API_TOKEN)
 
@@ -20,8 +20,8 @@ storage = MemoryStorage()
 dp = Dispatcher(bot, storage=storage)
 
 HELP_COMMANDS = """
-<b>/start</b> - <em>Запустить бота</em>
-<b>/help</b> - <em>Справка</em>
+<b>/start</b> - <em>Start bot</em>
+<b>/help</b> - <em>Help command</em>
 """
 
 
@@ -52,7 +52,7 @@ async def cmd_start(message: types.Message):
     # Set state
     await Form.name.set()
 
-    await message.reply("Hi there! What's your name?")
+    await message.reply("Yo! What's your name?")
 
 
 # You can use state '*' if you need to handle all states
@@ -92,7 +92,7 @@ async def process_country(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         data['country'] = message.text
     await Form.next()
-    await message.reply("What is your age?")
+    await message.reply("What is ur age?")
 
 
 # AGE VALIDATION
@@ -102,7 +102,7 @@ async def process_age_invalid(message: types.Message):
     """
     If age is invalid
     """
-    return await message.reply("Age gotta be a number.\nHow old are you? (digits only)")
+    return await message.reply("Age gotta be a number.\nHow old r u? (digits only)")
 
 
 # AGE
@@ -117,7 +117,7 @@ async def process_age(message: types.Message, state: FSMContext):
     markup.add("Male", "Female")
     markup.add("Other")
 
-    await message.reply("What is your gender?", reply_markup=markup)
+    await message.reply("What is ur gender?", reply_markup=markup)
 
 
 @dp.message_handler(lambda message: message.text not in ["Male", "Female", "Other"], state=Form.gender)
@@ -125,7 +125,7 @@ async def process_gender_invalid(message: types.Message):
     """
     In this example gender has to be one of: Male, Female, Other.
     """
-    return await message.reply("Bad gender name. Choose your gender from the keyboard.")
+    return await message.reply("Bad gender name. Choose ur gender from the keyboard.")
 
 
 @dp.message_handler(state=Form.gender)
